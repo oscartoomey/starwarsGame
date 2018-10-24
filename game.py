@@ -51,7 +51,7 @@ def equip(player):
     while running == True:
         print("Select your weapon:")
         for i in player["inventory"]:
-            print(i["name"]) #prints available inventory
+            print(i["id"]) #prints available inventory
         weapon = input("Enter the weapon you want to equip: ")
         weapon = normalise_input(weapon) #normalise player input
         weapon = weapon[0] #gains string from the normalised input
@@ -361,7 +361,6 @@ def main():
 
     # Allow the user to select a character
     player = choose_character()
-    equip(player)
     weapon = equip(player)
     player["damage"] = weapon["damage"]
 
