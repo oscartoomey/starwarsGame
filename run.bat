@@ -1,2 +1,2 @@
-py -3 ./main.py
+py -3 ./game.py
 pause
