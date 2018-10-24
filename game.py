@@ -34,13 +34,21 @@ def fight(max_time,enemy,player):
             enemy["health"] = enemy["health"] - player["damage"]
             print("You hit the enemy and dealt: {} damage points".format(player["damage"]))
             if enemy["health"] <= 0:
+                print("They have dropped:")
+                for i in enemy["items"]:
+                    player["location"]["items"].extend(enemy["items"])
+                    print(i)
                 return True
+            sleep(0.5)
+            print(".")
         else:
             player["health"] = player["health"] - enemy["damage"]
             print("The enemy hit you and dealt {} damage points".format(enemy["damage"]))
             if player["health"] <= 0:
                 print("You have been killed!")
                 exit()
+            sleep(0.5)
+            print(".")
 
 
 def equip(player):
@@ -51,7 +59,7 @@ def equip(player):
     while running == True:
         print("Select your weapon:")
         for i in player["inventory"]:
-            print(i["id"]) #prints available inventory
+            print(i["name"]) #prints available inventory
         weapon = input("Enter the weapon you want to equip: ")
         weapon = normalise_input(weapon) #normalise player input
         weapon = " ".join(weapon) #gains string from the normalised input
@@ -126,7 +134,7 @@ def print_menu(exits, location_items, inv_items):
     for item in inv_items:
         print("DROP " + item["id"].upper() + " to drop " + item["name"] + ".")
     if inv_items != []:
-        print("EQUIP")
+        print("EQUIP to look at your inventory and equip a weapon")
 
     print("What do you want to do?")
 
@@ -361,7 +369,8 @@ def main():
     ready_to_play()
 
     # Show the title sequence
-    #intro()
+    intro()
+    stopmusic()
 
     print()
 
@@ -370,7 +379,14 @@ def main():
     weapon = equip(player)
     player["damage"] = weapon["damage"]
 
+    if player["location"] == location_bar or location_canteena:
+        canteena()
+    else:
+        stopmusic()
+
     if player == han:
+        print("Greedo has been sent by Jabba to redeem his debts, who's gonna shoot first?")
+        sleep(2)
         fight(5,greedo,player)
 
     while not has_won(player):
@@ -394,6 +410,7 @@ def main():
         if encounter == True:
             encounter = station(player,encounter)
 
+    ending()
     print()
     print("Congratulations, the universe is safe again thanks to your efforts!")
     print("Now Darth Vader (or Kirill if you prefer) has been defeated and peace")

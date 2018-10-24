@@ -39,3 +39,12 @@ def intro():
     for _ in range(36):
         time.sleep(0.5)
         print("")
+
+def canteena():
+    play_music('canteena.wav')
+
+def ending():
+    play_music('victorymusic.wav')
+
+def stopmusic():
+    play_music(None)

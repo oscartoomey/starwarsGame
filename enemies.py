@@ -1,4 +1,5 @@
 import random
+from items import *
 
 stormtrooper = { "name": "stormtrooper",
                  "description": "Can't shoot for shit",
@@ -22,7 +23,7 @@ greedo = { "name": "Greedo",
            "description":"Who shot first?",
            "health":50,
            "damage":20,
-           "items":["password"],
+           "items":[item_powerconverter],
            "killwords":["bang","pew","shoot","kill"]
            }
 

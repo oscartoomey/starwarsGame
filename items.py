@@ -46,24 +46,25 @@ item_r2d2 = {
 
     "damage": 0,
 
-    "mass": 5
+    "mass" : 0
 }
 
-item_handgun = {
+item_pistol = {
     "id": "pistol",
     
     "name": "Blaster Pistol",
 
     "description": "________________",
 
-    "damage": 5,
+    "damage": 50,
 
     "mass": 1
+    
 }
 
 item_chewie = {
     "id": "chewie",
-
+    
     "name": "Chewbacca",
 
     "description": "________________",
@@ -80,26 +81,26 @@ item_leia = {
 
 	"description": "________________",
 
-    "damage": 0,
+        "damage": 0,
 
-    "mass" : 0
-}
+        "mass" : 0
+        }
 
 item_blaster = {
-    "id": "blaster",
+        "id": "blaster",
 
-    "name": "blaster",
+        "name": "blaster",
 
-    "description": "Standard issue blaster rifle.",
+        "description": "Standard issue blaster rifle.",
 
-    "damage": 10,
+        "damage": 10,
 
-    "mass":2
-}
+        "mass":2
+        }
 
 item_key = {
     "id": "key",
-
+    
     "name": "Key",
 
     "description": "The key to N/4.07.",
@@ -114,7 +115,7 @@ items = {
     "powerconverter": item_powerconverter,
     "landspeeder": item_landspeeder,
     "r2d2": item_r2d2,
-    "handgun": item_handgun,
+    "pistol": item_pistol,
     "chewie": item_chewie,
     "leia": item_leia,
     "blaster": item_blaster
