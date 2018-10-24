@@ -111,7 +111,7 @@ location_leiascell = {
     """Leia's cell, you can see her through the window. She looks back at you in relief and rushes
 to the door.""",
     
-    "items": [],
+    "items": [item_leia],
 
     "exits": {"west": "Death Star"}
 }

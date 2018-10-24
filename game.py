@@ -284,6 +284,18 @@ def kirillf(player,kiri):
         return kiri
     else:
         return kiri
+
+def roomcheck(player,rueu):
+    if player["location"] == location_leiascell:
+        if item_key in player["inventory"]:
+            rueu = False
+            return rueu
+        else:
+            print("You need a key to get in there.")
+            player["location"] = location_deathstar
+            return rueu
+    else:
+        return rueu
         
 # Display starwars ascii and wait for input.
 def ready_to_play():
@@ -361,6 +373,7 @@ def main():
     storm = True
     encounter = True
     kiri = True
+    rueu = True
     ready_to_play()
 
     # Show the title sequence
@@ -399,6 +412,9 @@ def main():
 
         if kiri == True:
             kiri = kirillf(player,kiri)
+
+        if rueu == True:
+            rueu = roomcheck(player,rueu)
 
     print()
     print("Congratulations, the universe is safe again thanks to your efforts!")
