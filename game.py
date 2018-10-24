@@ -36,7 +36,7 @@ def fight(max_time,enemy,player):
             if enemy["health"] <= 0:
                 print("They have dropped:")
                 for i in enemy["items"]:
-                    print(i)
+                    print(i["name"])
                 player["location"]["items"].extend(enemy["items"])
                 return True
             sleep(0.5)
