@@ -275,12 +275,15 @@ def station(player,encounter):
     return encounter 
 
 def kirillf(player,kiri):
-    print("You see the sillhouette of Darth Kirill looming in the darkness...")
-    print("It is time for the final battle.")
-    sleep(1)
-    fight(3,darth_kirill,player)
-    kiri = False
-    return kiri
+    if player["location"] == location_n407:
+        print("You see the sillhouette of Darth Kirill looming in the darkness...")
+        print("It is time for the final battle.")
+        sleep(1)
+        fight(4,darth_kirill,player)
+        kiri = False
+        return kiri
+    else:
+        return kiri
         
 # Display starwars ascii and wait for input.
 def ready_to_play():
@@ -395,7 +398,7 @@ def main():
             encounter = station(player,encounter)
 
         if kiri == True:
-            kiri = kirillf(player,encounter)
+            kiri = kirillf(player,kiri)
 
     print()
     print("Congratulations, the universe is safe again thanks to your efforts!")

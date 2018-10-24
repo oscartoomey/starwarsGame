@@ -34,7 +34,7 @@ location_cantina = {
     
     "items": [],
 
-    "exits": {"east": "Farm", "west": "booth", "north": "bar", "south": "TIE Fighter" },
+    "exits": {"east": "Farm", "west": "Booth", "north": "Bar", "south": "TIE Fighter" },
 
 }
 
