@@ -440,6 +440,9 @@ def main():
             rueu = roomcheck(player,rueu)
 
     ending()
+    print('''Congratulations, the universe is safe again thanks to your efforts. Leia has been freed, and
+          "Darth Vader, (or Kirill if you prefer) has been defeated.
+          "The Empire has crumbled...for now....''')
     
 
 if __name__ == "__main__":
