@@ -269,10 +269,15 @@ def powerconverters(player,fly):
     if item_powerconverter in location_landspeeder["items"]:
         player["location"] = location_deathstar
         fly = False
-        print("yes")
+        print("Your ship powers up, and you set off to the deathstar to save Leia!")
+        sleep(1)
+        print("Travelling...")
+        sleep(1)
+        print("Docking...")
+        sleep(1)
+        print("You have arrived on the ship. Time to face off against the treacherous Darth Kirill!")
         return fly
     else:
-        print("no")
         return fly
 
 def station(player,encounter):
@@ -435,6 +440,9 @@ def main():
             rueu = roomcheck(player,rueu)
 
     ending()
+    print('''Congratulations, the universe is safe again thanks to your efforts. Leia has been freed, and
+          "Darth Vader, (or Kirill if you prefer) has been defeated.
+          "The Empire has crumbled...for now....''')
     
 
 if __name__ == "__main__":
