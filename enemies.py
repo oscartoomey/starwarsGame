@@ -5,7 +5,7 @@ stormtrooper = { "name": "stormtrooper",
                  "description": "Can't shoot for shit",
                  "health": random.randint(1,10),
                  "damage": random.randint(1,100),
-                 "items":["blaster","helmet"],
+                 "items":[item_blaster],
                  "killwords":["bang","pew","shoot","kill"]
                  }
 
@@ -31,6 +31,6 @@ darth_kirill = { "name" : "Darth Kirill",
                  "description": "He is your lecturer.",
                  "health" : 100,
                  "damage": 100,
-                 "items": ["lightsaber","mask","cigarettes"],
+                 "items": [item_lightsaber],
                  "killwords":["clash","strike","force push","force choke","hit"]
                  }

@@ -43,6 +43,9 @@ def intro():
 def canteena():
     play_music('canteena.wav')
 
+def darthkirill():
+    play_music('darthkirill.wav')
+
 def ending():
     play_music('victorymusic.wav')
 

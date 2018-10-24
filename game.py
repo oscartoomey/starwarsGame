@@ -36,8 +36,8 @@ def fight(max_time,enemy,player):
             if enemy["health"] <= 0:
                 print("They have dropped:")
                 for i in enemy["items"]:
-                    player["location"]["items"].extend(enemy["items"])
                     print(i)
+                player["location"]["items"].extend(enemy["items"])
                 return True
             sleep(0.5)
             print(".")
@@ -149,7 +149,6 @@ def execute_go(player, direction):
 
 # Execute take
 def execute_take(player, item_id):
-
     found = False
 
     for item in player["location"]["items"]:
@@ -283,13 +282,29 @@ def station(player,encounter):
     encounter = False
     return encounter 
 
-def station(player,encounter):
-    print("!")
-    sleep(1)
-    fight(6,gorak,player)
-    encounter = False
-    return encounter 
-        
+def kirillf(player,kiri):
+    if player["location"] == location_n407:
+        print("You see the sillhouette of Darth Kirill looming in the darkness...")
+        print("It is time for the final battle.")
+        darthkirill()
+        sleep(1)
+        fight(4,darth_kirill,player)
+        kiri = False
+        return kiri
+    else:
+        return kiri
+
+def roomcheck(player,rueu):
+    if player["location"] == location_leiascell:
+        if item_key in player["inventory"]:
+            rueu = False
+            return rueu
+        else:
+            print("You need a key to get in there.")
+            player["location"] = location_deathstar
+            return rueu
+    else:
+        return rueu
         
 # Display starwars ascii and wait for input.
 def ready_to_play():
@@ -366,10 +381,12 @@ def main():
     fly = True
     storm = True
     encounter = True
+    kiri = True
+    rueu = True
     ready_to_play()
 
     # Show the title sequence
-    intro()
+    #intro()
     stopmusic()
 
     print()
@@ -379,7 +396,7 @@ def main():
     weapon = equip(player)
     player["damage"] = weapon["damage"]
 
-    if player["location"] == location_bar or location_canteena:
+    if player["location"] == location_bar or location_cantina:
         canteena()
     else:
         stopmusic()
@@ -410,12 +427,15 @@ def main():
         if encounter == True:
             encounter = station(player,encounter)
 
-    ending()
-    print()
-    print("Congratulations, the universe is safe again thanks to your efforts!")
-    print("Now Darth Vader (or Kirill if you prefer) has been defeated and peace")
-    print("has been restored to the galaxy once again...   for now...")
 
+        if kiri == True:
+            kiri = kirillf(player,kiri)
+
+        if rueu == True:
+            rueu = roomcheck(player,rueu)
+
+    ending()
+    
 
 if __name__ == "__main__":
     main()
