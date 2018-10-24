@@ -332,7 +332,10 @@ def main():
         # Execute the user's commands
         execute_command(player, command)
 
-    print("Well done, you saved Leia!")
+    print()
+    print("Congratulations, the universe is safe again thanks to your efforts!")
+    print("Now Darth Vader (or Kirill if you prefer) has been defeated and peace")
+    print("has been restored to the galaxy once again...   for now...")
 
 
 if __name__ == "__main__":
