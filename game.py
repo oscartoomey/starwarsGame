@@ -391,7 +391,7 @@ def main():
     ready_to_play()
 
     # Show the title sequence
-    #intro()
+    intro()
     stopmusic()
 
     print()
