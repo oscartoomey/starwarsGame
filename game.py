@@ -272,6 +272,7 @@ def powerconverters(player,fly):
         print("yes")
         return fly
     else:
+        print("no")
         return fly
 
 def station(player,encounter):
