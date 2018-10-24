@@ -141,7 +141,6 @@ def execute_go(player, direction):
 
 # Execute take
 def execute_take(player, item_id):
-
     found = False
 
     for item in player["location"]["items"]:
@@ -275,13 +274,13 @@ def station(player,encounter):
     encounter = False
     return encounter 
 
-def station(player,encounter):
-    print("!")
+def kirillf(player,kiri):
+    print("You see the sillhouette of Darth Kirill looming in the darkness...")
+    print("It is time for the final battle.")
     sleep(1)
-    fight(6,gorak,player)
-    encounter = False
-    return encounter 
-        
+    fight(3,darth_kirill,player)
+    kiri = False
+    return kiri
         
 # Display starwars ascii and wait for input.
 def ready_to_play():
@@ -358,6 +357,7 @@ def main():
     fly = True
     storm = True
     encounter = True
+    kiri = True
     ready_to_play()
 
     # Show the title sequence
@@ -393,6 +393,9 @@ def main():
 
         if encounter == True:
             encounter = station(player,encounter)
+
+        if kiri == True:
+            kiri = kirillf(player,encounter)
 
     print()
     print("Congratulations, the universe is safe again thanks to your efforts!")
