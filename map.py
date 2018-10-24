@@ -4,7 +4,7 @@ location_landspeeder = {
 
     "description":
     """You have found a very aged Landspeeder, buried in the warm sand. It is rough and course, and keeps getting everywhere. 
-    It needs power converters to fly. You remember your uncle telling you that they sell power converters at the local Tosche Station.""",
+It needs power converters to fly. You remember your uncle telling you that they sell power converters at the local Tosche Station.""",
     
     "items": [],
 
@@ -43,7 +43,7 @@ location_booth = {
 
     "description":
     """You have entered a nearby booth. You feel safe from the menacing atmosphere of the bar. To the east of you is the centre of the centre 
-    of the Cantina.""",
+of the Cantina.""",
     
     "items": [],
 
@@ -56,7 +56,7 @@ location_farm = {
 
     "description":
     """The farm is desolate. The harvest hasn't been great this year. The dried soil 
-    crunches beneath your feet. The hot sun beats down on you.""",
+crunches beneath your feet. The hot sun beats down on you.""",
     
     "items": [],
 
@@ -68,8 +68,8 @@ location_bar = {
     "name": "Bar",
 
     "description":
-    """The bar is oddly sticky and crowded. There are many frightening goons about, most you recognise to be dealy bounty
-    hunters.""",
+    """The bar is oddly sticky and crowded. There are many frightening goons about, most you recognise to be deadly bounty
+hunters.""",
     
     "items": [],
 
@@ -82,8 +82,8 @@ location_tiefighter = {
 
     "description":
     """The TIE Fighter is very advanced with the newest technology, as expected of Darth Vader's equipment.
-    The cabin smells of strong a tobacco. The vast open space ahead is intimidating, even for experienced
-    pilots.""",
+The cabin smells of strong a tobacco. The vast open space ahead is intimidating, even for experienced
+pilots.""",
     
     "items": [],
         
@@ -95,8 +95,8 @@ location_deathstar = {
     "name": "Death Star",
 
     "description":
-        """The Death Star is a large, brightly-lit ship. You can hear the faint noise of Stromtroopers marching in the distance.
-    You are very tense as you are about to approach your final battle.""",
+    """The Death Star is a large, brightly-lit ship. You can hear the faint noise of Stromtroopers marching in the distance.
+You are very tense as you are about to approach your final battle.""",
 
     "items": [],
 
@@ -109,7 +109,7 @@ location_leiascell = {
 
     "description":
     """Leia's cell, you can see her through the window. She looks back at you in relief and rushes
-    to the door.""",
+to the door.""",
     
     "items": [],
 
