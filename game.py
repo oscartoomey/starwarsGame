@@ -3,7 +3,7 @@ from items import items
 from player import *
 from music import *
 from gameparser import normalise_input
-from time import sleep, clock
+from time import sleep, perf_counter
 from enemies import *
 
 
@@ -22,14 +22,14 @@ def fight(max_time,enemy,player):
     print(".")
     sleep(0.5)
     print("Fight!")
-    start_time = clock()
-    end_time = clock()
     # Check if they were fast enough and gave the correct input.
-    time_taken = end_time - start_time
     while True:
         killwords = enemy["killwords"]
         correct = random.choice(killwords)
+        start_time = perf_counter()
         user_input = input(correct + "\n")
+        end_time = perf_counter()
+        time_taken = end_time - start_time
         if user_input == correct and time_taken <= max_time:
             enemy["health"] = enemy["health"] - player["damage"]
             print("You hit the enemy and dealt: {} damage points".format(player["damage"]))
@@ -39,8 +39,8 @@ def fight(max_time,enemy,player):
             player["health"] = player["health"] - enemy["damage"]
             print("The enemy hit you and dealt {} damage points".format(enemy["damage"]))
             if player["health"] <= 0:
-                print("Luke has been killed!")
-                exit
+                print("You have been killed!")
+                exit()
 
 
 def equip(player):
@@ -54,13 +54,12 @@ def equip(player):
             print(i["id"]) #prints available inventory
         weapon = input("Enter the weapon you want to equip: ")
         weapon = normalise_input(weapon) #normalise player input
-        weapon = weapon[0] #gains string from the normalised input
+        weapon = " ".join(weapon) #gains string from the normalised input
         for i in player["inventory"]: #checks the inventory if valid
             if weapon == i["name"].lower():
                 running = False
                 return i #returns the id of the weapon
-            else:
-                print("not a valid entry")
+        print("not a valid entry")
 
 
 # Items in inventory
@@ -275,6 +274,13 @@ def station(player,encounter):
     fight(6,gorak,player)
     encounter = False
     return encounter 
+
+def station(player,encounter):
+    print("!")
+    sleep(1)
+    fight(6,gorak,player)
+    encounter = False
+    return encounter 
         
         
 # Display starwars ascii and wait for input.
@@ -364,6 +370,9 @@ def main():
     weapon = equip(player)
     player["damage"] = weapon["damage"]
 
+    if player == han:
+        fight(5,greedo,player)
+
     while not has_won(player):
         # Print status
         print_location(player)
@@ -385,7 +394,10 @@ def main():
         if encounter == True:
             encounter = station(player,encounter)
 
-    print("Well done, you saved Leia!")
+    print()
+    print("Congratulations, the universe is safe again thanks to your efforts!")
+    print("Now Darth Vader (or Kirill if you prefer) has been defeated and peace")
+    print("has been restored to the galaxy once again...   for now...")
 
 
 if __name__ == "__main__":
