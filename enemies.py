@@ -9,6 +9,15 @@ stormtrooper = { "name": "stormtrooper",
                  }
 
 
+gorak = { "name": "gorak",
+          "description": "",
+          "health": 5,
+          "damage": 10,
+          "items" : [],
+          "killwords":["bang","pew","shoot","kill"]
+          }
+          
+
 greedo = { "name": "Greedo",
            "description":"Who shot first?",
            "health":50,

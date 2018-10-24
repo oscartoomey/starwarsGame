@@ -1,5 +1,4 @@
 from items import *
-
 location_landspeeder = {
     "name": "Landspeeder",
 
@@ -10,6 +9,7 @@ location_landspeeder = {
     "items": [],
 
     "exits": {"north": "Farm"},
+
 }
 
 location_toschestation = {
@@ -22,6 +22,8 @@ location_toschestation = {
     "items": [item_powerconverter],
 
     "exits":  {"west": "Farm"},
+
+    
 }
 
 location_cantina = {
@@ -32,7 +34,8 @@ location_cantina = {
     
     "items": [],
 
-    "exits": {"east": "Farm", "west": "Booth", "north": "Bar", "south": "TIE Fighter" },
+    "exits": {"east": "Farm", "west": "booth", "north": "bar", "south": "TIE Fighter" },
+
 }
 
 location_booth = {
@@ -45,6 +48,7 @@ location_booth = {
     "items": [],
 
     "exits": {"east": "Cantina"},
+
 }
 
 location_farm = {
@@ -82,20 +86,22 @@ location_tiefighter = {
     pilots.""",
     
     "items": [],
-    
+        
     "exits": {"north": "Cantina", "south": "Death Star"}
+
 }
 
 location_deathstar = {
     "name": "Death Star",
 
     "description":
-    """The Death Star is a large, brightly-lit ship. You can hear the faint noise of Stromtroopers marching in the distance.
+        """The Death Star is a large, brightly-lit ship. You can hear the faint noise of Stromtroopers marching in the distance.
     You are very tense as you are about to approach your final battle.""",
-    
+
     "items": [],
 
-    "exits": {"south": "N/4.07", "north": "TIE Fighter", "east": "Leias Cell"}
+    "exits": {"south": "N/4.07", "north": "TIE Fighter", "east": "Leia's Cell"}
+
 }
 
 location_leiascell = {
@@ -110,7 +116,7 @@ location_leiascell = {
     "exits": {"west": "Death Star"}
 }
 
-location_n_4_07 = {
+location_n407 = {
     "name": "N/4.07",
 
     "description":
@@ -119,6 +125,7 @@ location_n_4_07 = {
     "items": [item_key],
 
     "exits": {"south": "Death Star"}
+
 }
 
 locations = {
@@ -131,5 +138,6 @@ locations = {
     "TIE Fighter": location_tiefighter,
     "Death Star": location_deathstar,
     "Leia's Cell": location_leiascell,
-    "N/4.07": location_n_4_07
-}
+    "N/4.07": location_n407
+    }
+    

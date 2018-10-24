@@ -2,16 +2,16 @@ from map import locations
 from items import items
 from player import *
 from music import *
-from equip import *
 from gameparser import normalise_input
 from time import sleep, clock
+from enemies import *
 
 
 # Take timed input, timed in seconds.
-def fight(max_time,enemy):
+def fight(max_time,enemy,player):
     # Record the time before and after the user types their input.
     print("Enemy: {}".format(enemy["name"]))
-    print("You have {} seconds to take {} out.".format(max_time,enemy))
+    print("You have {} seconds to take {} out.".format(max_time,enemy["name"]))
     sleep(1)
     print("Enter the next word quickly!:")
     sleep(0.5)
@@ -31,16 +31,36 @@ def fight(max_time,enemy):
         correct = random.choice(killwords)
         user_input = input(correct + "\n")
         if user_input == correct and time_taken <= max_time:
-            enemy["health"] = enemy["health"] - luke["damage"]
+            enemy["health"] = enemy["health"] - player["damage"]
             print(enemy["health"])
             if enemy["health"] <= 0:
                 return True
         else:
-            luke["health"] = luke["health"] - enemy["damage"]
-            print(luke["health"])
-            if luke["health"] <= 0:
+            player["health"] = player["health"] - enemy["damage"]
+            print(player["health"])
+            if player["health"] <= 0:
                 print("Luke has been killed!")
                 exit
+
+
+def equip(player):
+    if player["inventory"] == []:
+        print("Cant equip anything.")
+        return None #if nothing in inventory returns none
+    running = True
+    while running == True:
+        print("Select your weapon:")
+        for i in player["inventory"]:
+            print(i["name"]) #prints available inventory
+        weapon = input("Enter the weapon you want to equip: ")
+        weapon = normalise_input(weapon) #normalise player input
+        weapon = weapon[0] #gains string from the normalised input
+        for i in player["inventory"]: #checks the inventory if valid
+            if weapon == i["name"].lower():
+                running = False
+                return i #returns the id of the weapon
+            else:
+                print("not a valid entry")
 
 
 # Items in inventory
@@ -182,10 +202,8 @@ def execute_command(player, command):
             print("Drop what?")
     
     elif command[0] == "equip" and len(player["inventory"]) != 0:
-        newDamage = None
-        while newDamage == None:
-            newDamage = equip()
-        player["damage"] = newDamage
+        weapon = equip(player)
+        player["damage"] = weapon["damage"]
 
     else:
         print("This makes no sense.")
@@ -230,12 +248,33 @@ def print_health(player):
 def move(exits, direction):
     return locations[exits[direction]]
 
-def deathstar():
+def deathstar(player, storm):
     if player["location"] == location_deathstar:
         print("Storm troopers wait for you once you arrive to the ship, take them out!")
-        fight(5,stormtrooper)
-        fight(5,stormtrooper)
-        fight(3,stormtrooper)
+        fight(5,stormtrooper,player)
+        fight(5,stormtrooper,player)
+        fight(3,stormtrooper,player)
+        storm = False
+        return storm
+    else:
+        return storm
+
+def powerconverters(player,fly):
+    if item_powerconverter in location_landspeeder["items"]:
+        player["location"] = location_deathstar
+        fly = False
+        print("yes")
+        return fly
+    else:
+        print("no")
+        return fly
+
+def station(player,encounter):
+    print("There's a wild gorak hiding in the shadows of the station!")
+    sleep(1)
+    fight(6,gorak,player)
+    encounter = False
+    return encounter 
         
         
 # Display starwars ascii and wait for input.
@@ -310,15 +349,21 @@ def has_won(player):
 # Main function
 def main():
     # Introduction (ready to play etc)
+    fly = True
+    storm = True
+    encounter = True
     ready_to_play()
 
     # Show the title sequence
-    intro()
+    #intro()
 
     print()
 
     # Allow the user to select a character
     player = choose_character()
+    equip(player)
+    weapon = equip(player)
+    player["damage"] = weapon["damage"]
 
     while not has_won(player):
         # Print status
@@ -331,6 +376,15 @@ def main():
 
         # Execute the user's commands
         execute_command(player, command)
+        
+        if fly == True:
+            fly = powerconverters(player,fly)
+
+        if storm == True:
+            storm = deathstar(player,storm)
+
+        if encounter == True:
+            encounter = station(player,encounter)
 
     print()
     print("Congratulations, the universe is safe again thanks to your efforts!")
