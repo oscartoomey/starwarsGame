@@ -13,6 +13,6 @@ luke = {"inventory": [item_lightsaber], # Luke's items.
 han = {"inventory": [item_pistol,item_chewie], # Han's items.
        "max_mass": 5, # The amount Han can carry.
        "location": location_bar, # The location Han starts in.
-       "health": 1, # Han's current health.
-       "max_health": 1, # Han's maximum health.
+       "health": 100, # Han's current health.
+       "max_health": 100, # Han's maximum health.
        "damage": 0} # Han's damage.
