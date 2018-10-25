@@ -293,7 +293,7 @@ def kirillf(player,kiri):
         print("It is time for the final battle.")
         darthkirill()
         sleep(1)
-        fight(4,darth_kirill,player)
+        fight(3,darth_kirill,player)
         kiri = False
         return kiri
     else:
