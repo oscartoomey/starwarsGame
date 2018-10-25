@@ -56,7 +56,7 @@ item_pistol = {
 
     "description": "________________",
 
-    "damage": 50,
+    "damage": 10,
 
     "mass": 1
     
@@ -69,7 +69,7 @@ item_chewie = {
 
     "description": "________________",
 
-    "damage": 0,
+    "damage": 5,
 
     "mass": 0
 }
@@ -93,7 +93,7 @@ item_blaster = {
 
         "description": "Standard issue blaster rifle.",
 
-        "damage": 10,
+        "damage": 25,
 
         "mass":2
         }

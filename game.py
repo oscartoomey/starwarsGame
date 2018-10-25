@@ -13,7 +13,7 @@ def fight(max_time,enemy,player):
     print("Enemy: {}".format(enemy["name"]))
     print("You have {} seconds to take {} out.".format(max_time,enemy["name"]))
     sleep(1)
-    print("Enter the next word quickly!:")
+    print("Enter the next word quickly!:") #paces the game to prepare the user
     sleep(0.5)
     print(".")
     sleep(0.5)
@@ -24,20 +24,20 @@ def fight(max_time,enemy,player):
     print("Fight!")
     # Check if they were fast enough and gave the correct input.
     while True:
-        killwords = enemy["killwords"]
+        killwords = enemy["killwords"] #random words to type from 
         correct = random.choice(killwords)
         start_time = perf_counter()
         user_input = input(correct + "\n")
         end_time = perf_counter()
         time_taken = end_time - start_time
-        if user_input == correct and time_taken <= max_time:
+        if user_input == correct and time_taken <= max_time: #check if the user has succeeded
             enemy["health"] = enemy["health"] - player["damage"]
             print("You hit the enemy and dealt: {} damage points".format(player["damage"]))
             if enemy["health"] <= 0:
                 print("They have dropped:")
                 for i in enemy["items"]:
-                    print(i["name"])
-                player["location"]["items"].extend(enemy["items"])
+                    print(i["name"]) 
+                player["location"]["items"].extend(enemy["items"]) #moving dead npc's items to the room
                 return True
             sleep(0.5)
             print(".")
@@ -45,7 +45,7 @@ def fight(max_time,enemy,player):
             player["health"] = player["health"] - enemy["damage"]
             print("The enemy hit you and dealt {} damage points".format(enemy["damage"]))
             if player["health"] <= 0:
-                print("You have been killed!")
+                print("You have been killed!") #check if player is dead
                 exit()
             sleep(0.5)
             print(".")
@@ -255,7 +255,7 @@ def move(exits, direction):
     return locations[exits[direction]]
 
 def deathstar(player, storm):
-    if player["location"] == location_deathstar:
+    if player["location"] == location_deathstar: #execute part of the story for arrival on the ship
         print("Storm troopers wait for you once you arrive to the ship, take them out!")
         fight(5,stormtrooper,player)
         fight(5,stormtrooper,player)
@@ -266,12 +266,12 @@ def deathstar(player, storm):
         return storm
 
 def powerconverters(player,fly):
-    if item_powerconverter in location_landspeeder["items"]:
+    if item_powerconverter in location_landspeeder["items"]: #execute the part of the story to get to the deathstar
         player["location"] = location_deathstar
         fly = False
         print("Your ship powers up, and you set off to the deathstar to save Leia!")
         sleep(1)
-        print("Travelling...")
+        print("Travelling...") #player travelling
         sleep(1)
         print("Docking...")
         sleep(1)
@@ -288,7 +288,7 @@ def station(player,encounter):
     return encounter 
 
 def kirillf(player,kiri):
-    if player["location"] == location_n407:
+    if player["location"] == location_n407: #execute final fight
         print("You see the sillhouette of Darth Kirill looming in the darkness...")
         print("It is time for the final battle.")
         darthkirill()
@@ -299,7 +299,7 @@ def kirillf(player,kiri):
     else:
         return kiri
 
-def roomcheck(player,rueu):
+def roomcheck(player,rueu): #to see if the player can enter the room
     if player["location"] == location_leiascell:
         if item_key in player["inventory"]:
             rueu = False
@@ -399,14 +399,14 @@ def main():
     # Allow the user to select a character
     player = choose_character()
     weapon = equip(player)
-    player["damage"] = weapon["damage"]
+    player["damage"] = weapon["damage"] #equip a weapon
 
-    if player["location"] == location_bar or location_cantina:
+    if player["location"] == location_bar or location_cantina: #player music
         canteena()
     else:
         stopmusic()
 
-    if player == han:
+    if player == han: #execute hans branch of the story
         print("Greedo has been sent by Jabba to redeem his debts, who's gonna shoot first?")
         sleep(2)
         fight(5,greedo,player)
@@ -439,7 +439,7 @@ def main():
         if rueu == True:
             rueu = roomcheck(player,rueu)
 
-    ending()
+    ending() #play end music and message
     print('''Congratulations, the universe is safe again thanks to your efforts. Leia has been freed, and
           "Darth Vader, (or Kirill if you prefer) has been defeated.
           "The Empire has crumbled...for now....''')
